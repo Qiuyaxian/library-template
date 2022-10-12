@@ -1,0 +1,28 @@
+{
+  "name": "theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.css",
+  "style": "lib/index.css",
+  "scripts": {
+    "build": "rimraf lib & gulp build"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ],
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-cssmin": "^0.2.0"
+  },
+  "devDependencies": {
+    "gulp-less": "^5.0.0"
+  }
+}
