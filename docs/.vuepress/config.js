@@ -1,8 +1,9 @@
 const docs = require('../docs.json')
 const commonSidebar = ['/', ...docs]
+const version = process.env.VERSION || require('../../package.json').version
 
 module.exports = {
-  title: 'library-template组件库模版',
+  title: `library-template组件库模版(v${version})`,
   description: '基于该模版快速实现组件库开发',
   base: '/',
   themeConfig: {

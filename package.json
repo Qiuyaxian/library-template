@@ -16,6 +16,7 @@
     "docs:build": "npm run build:entry & vuepress build docs",
     "lint:prettier": "prettier --write --list-different --loglevel warn \"**/*.{js,json,css,less,vue,html,md}\"",
     "lint:stylelint": "stylelint --fix \"src/**/*.{vue,less}\"",
+    "release": "node scripts/release.js",
     "commit": "git-cz",
     "postInstall": "husky install"
   },
@@ -35,7 +36,9 @@
     "commitizen": "^4.2.5",
     "cp-cli": "^2.0.0",
     "cross-env": "^7.0.3",
+    "cz-customizable": "^7.0.0",
     "eslint": "^8.25.0",
+    "eslint-plugin-vue": "^9.6.0",
     "file-save": "^0.2.0",
     "husky": "^8.0.1",
     "inquirer": "7.0.0",
