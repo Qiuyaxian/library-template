@@ -93,14 +93,12 @@ npm run new
 project
 ├── docs
 │   └── .vuepress
-│   │  └── components
-│   │      └── example
-│   │          └── $component
-│   │              └── 1.vue
-│   │
-│   └── vue
-│       └── $componentType
-│           └── $component.md
+│      └── components
+│          └── example
+│              └── $component
+│                  └── 1.vue
+│
+│
 │
 ├── packages
 │   └── src
