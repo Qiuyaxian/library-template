@@ -102,12 +102,18 @@ project
 │       └── $componentType
 │           └── $component.md
 │
-├── src
-│   └── components
+├── packages
+│   └── src
 │       └── $component
 │           ├── src
 |           │   └── main.vue
 │           └── index.js
+│
+│
+├── src
+│   └── theme
+│       └── src
+│           └── $component.less
 │
 ```
 
