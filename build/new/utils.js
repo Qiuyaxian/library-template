@@ -32,9 +32,9 @@ function initConfigFiles() {
   const packages = fs.readdirSync(packagesPath)
   if (Array.isArray(packages)) {
     for (var i = 0; i < packages.length; i++) {
-      const package = packages[i]
-      if (fs.statSync(`${packagesPath}/${package}`).isDirectory()) {
-        componentsFile[package] = `./packages/${package}/index.js`
+      const packageName = packages[i]
+      if (fs.statSync(`${packagesPath}/${packageName}`).isDirectory()) {
+        componentsFile[packageName] = `./packages/${packageName}/index.js`
       }
     }
   }
@@ -55,8 +55,12 @@ module.exports = {
     return componentsFile[componentName]
   },
   setComponent(componentName) {
-    componentsFile[componentName] = `./packages/${componentName}/index.js`
-    fileSave(componentPath, JSON.stringify(componentsFile, null, 2))
+    if (!componentsFile) {
+      throw new Error('components.json is not empty')
+    } else {
+      componentsFile[componentName] = `./packages/${componentName}/index.js`
+      fileSave(componentPath, JSON.stringify(componentsFile, null, 2))
+    }
   },
   isExistComponent(componentName) {
     return componentMap(componentName)

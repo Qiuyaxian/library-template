@@ -53,35 +53,42 @@ module.exports = function (name, chineseName, opt) {
   if (fs.existsSync(docsFilePath)) {
     docsConfigFile = require(docsFilePath)
   }
-  let mdPath = getAbsolutePath(
-    `/docs/${componentType}/${kebabCaseComponentName}.md`
-  )
-  let mdDemoPath = getAbsolutePath(
-    `/docs/.vuepress/components/example/${kebabCaseComponentName}/1.vue`
-  )
-  // 新增归类类型
-  if (componentType === -1) {
-    // 重新生成文档路径
-    mdPath = getAbsolutePath(
-      `/docs/${newComponentType}/${kebabCaseComponentName}.md`
-    )
-    docsConfigFile.push({
-      title: chineseComponentType,
-      name: newComponentType,
-      collapsable: false,
-      children: [`/${newComponentType}/${kebabCaseComponentName}`]
-    })
+  if (Array.isArray(!docsConfigFile)) {
+    throw new Error('docs.json is not empty')
   } else {
-    const SHORT_MD_PATH = `/${componentType}/${kebabCaseComponentName}`
-    const currentComponentType = docsConfigFile.find(
-      (item) => item.name === componentType
+    let mdPath = getAbsolutePath(
+      `/docs/${componentType}/${kebabCaseComponentName}.md`
     )
-    currentComponentType.children.push(SHORT_MD_PATH)
+    let mdDemoPath = getAbsolutePath(
+      `/docs/.vuepress/components/example/${kebabCaseComponentName}/1.vue`
+    )
+    // 新增归类类型
+    if (componentType === -1) {
+      // 重新生成文档路径
+      mdPath = getAbsolutePath(
+        `/docs/${newComponentType}/${kebabCaseComponentName}.md`
+      )
+      docsConfigFile.push({
+        title: chineseComponentType,
+        name: newComponentType,
+        collapsable: false,
+        children: [`/${newComponentType}/${kebabCaseComponentName}`]
+      })
+    } else {
+      const SHORT_MD_PATH = `/${componentType}/${kebabCaseComponentName}`
+      const currentComponentType = docsConfigFile.find(
+        (item) => item.name === componentType
+      )
+      currentComponentType.children.push(SHORT_MD_PATH)
+    }
+    // 创建文件
+    fileSave(
+      mdPath,
+      mdContentTemplate(name, chineseName, kebabCaseComponentName)
+    )
+    // 创建案例
+    fileSave(mdDemoPath, mdDemoContentTemplate(name))
+    // 更新引用
+    fileSave(docsFilePath, JSON.stringify(docsConfigFile, null, 2))
   }
-  // 创建文件
-  fileSave(mdPath, mdContentTemplate(name, chineseName, kebabCaseComponentName))
-  // 创建案例
-  fileSave(mdDemoPath, mdDemoContentTemplate(name))
-  // 更新引用
-  fileSave(docsFilePath, JSON.stringify(docsConfigFile, null, 2))
 }

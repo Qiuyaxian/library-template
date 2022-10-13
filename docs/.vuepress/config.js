@@ -11,7 +11,7 @@ module.exports = {
     nav: [
       {
         text: 'Github',
-        link: 'https://github.com/Qiuyaxian/react-cra-template.git'
+        link: 'https://github.com/Qiuyaxian/library-template.git'
       }
     ],
     // 左侧导航
