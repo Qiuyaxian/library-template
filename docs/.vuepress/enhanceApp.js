@@ -1,4 +1,5 @@
 import DemoBlock from './components/demo-block'
+import '../../src/theme/src/index.less'
 export default ({ Vue, isServer }) => {
   if (!isServer) {
     window.global = window

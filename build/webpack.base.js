@@ -41,7 +41,7 @@ const webpackConfig = {
   },
   plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
 }
-console.log(process.env.use_analyzer, 'process.env.use_analyzer')
+
 if (process.env.use_analyzer) {
   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
