@@ -3,6 +3,6 @@
     "title": "公共组件",
     "name": "common",
     "collapsable": false,
-    "children": ["/common/tabbar"]
+    "children": ["/common/demo"]
   }
 ]

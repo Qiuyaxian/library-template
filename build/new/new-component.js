@@ -2,11 +2,21 @@ const path = require('path')
 // const camelCase = require('lodash/camelCase')
 // const upperFirst = require('lodash/upperFirst')
 // const upperCamelCase = str => upperFirst(camelCase(str))
-const { fileSave, getComponentName, setComponent } = require('./utils')
+const {
+  kebabCase,
+  fileSave,
+  getComponentName,
+  setComponent
+} = require('./utils')
 
 module.exports = function (name) {
   const componentName = getComponentName(name)
-  const packagePath = path.resolve(__dirname, '../../packages', componentName)
+  const kebabCaseComponentName = kebabCase(name)
+  const packagePath = path.resolve(
+    __dirname,
+    '../../packages',
+    kebabCaseComponentName
+  )
   const Files = [
     {
       filename: 'index.js',
@@ -38,5 +48,5 @@ module.exports = function (name) {
     fileSave(path.join(packagePath, file.filename), file.content)
   })
   // 更新 components.json 配置
-  setComponent(componentName)
+  setComponent(kebabCaseComponentName)
 }

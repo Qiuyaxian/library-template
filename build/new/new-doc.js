@@ -1,8 +1,11 @@
 const fs = require('fs')
-const kebabCase = require('lodash/kebabCase')
 const upperFirst = require('lodash/upperFirst')
-
-const { fileSave, getAbsolutePath, docsPath, docsFilePath } = require('./utils')
+const {
+  fileSave,
+  getAbsolutePath,
+  kebabCase,
+  docsFilePath
+} = require('./utils')
 
 const mdContentTemplate = function (
   componentName,

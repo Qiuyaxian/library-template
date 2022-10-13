@@ -3,6 +3,7 @@ const path = require('path')
 const nodeFileSave = require('file-save')
 const camelCase = require('lodash/camelCase')
 const upperFirst = require('lodash/upperFirst')
+const kebabCase = require('lodash/kebabCase')
 const upperCamelCase = (str) => upperFirst(camelCase(str))
 const getAbsolutePath = (dir) => path.join(__dirname, '../../', dir)
 const packagesPath = getAbsolutePath('packages')
@@ -47,6 +48,7 @@ module.exports = {
   packagesPath: packagesPath,
   componentPath: componentPath,
   components: componentsFile,
+  kebabCase: kebabCase,
   getAbsolutePath: getAbsolutePath,
   getComponentName(componentName) {
     return upperCamelCase(componentName)

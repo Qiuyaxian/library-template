@@ -1,3 +1,4 @@
 {
-  "Tabbar": "./packages/Tabbar/index.js"
+  "Tabbar": "./packages/Tabbar/index.js",
+  "demo": "./packages/demo/index.js"
 }
