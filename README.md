@@ -36,7 +36,7 @@ yalc publish
 #### 在依赖该组件的项目中执行安装命令
 
 ```shell
-yalc add my-npmPackage
+yalc add library-template
 ```
 
 #### 本地联调完成后执行下面命令移除本地依赖
