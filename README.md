@@ -105,7 +105,8 @@ project
 ├── src
 │   └── components
 │       └── $component
-│           ├── $component.vue
+│           ├── src
+|           │   └── main.vue
 │           └── index.js
 │
 ```
