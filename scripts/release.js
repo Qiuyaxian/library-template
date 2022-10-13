@@ -52,6 +52,7 @@ const release = async () => {
   ])
 
   if (yes) {
+    // 执行提交
     await execa('npm', ['run', 'build'], { stdio: 'inherit' })
     await execa('git', ['add', '.'], { stdio: 'inherit' })
     try {
@@ -59,6 +60,7 @@ const release = async () => {
         stdio: 'inherit'
       })
     } catch (e) {}
+    // 打包文档
     if (genDocs) {
       await execa('npm', ['run', 'docs:build'], { stdio: 'inherit' })
       // await execa('git', ['add', 'docs/.vuepress/dist'], { stdio: 'inherit' })
@@ -85,7 +87,7 @@ const release = async () => {
       } catch (e) {}
     }
   }
-
+  // 生成change-log
   require('./gen-changelog')(version)
 }
 
