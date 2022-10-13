@@ -5,8 +5,9 @@
 <script>
 export default {
   name: 'ExampleDemo1',
-  data() { return {} },
+  data() {
+    return {}
+  },
   methods: {}
 }
 </script>
-

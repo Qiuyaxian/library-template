@@ -82,7 +82,11 @@ module.exports = function (name, chineseName, opt) {
       const currentComponentType = docsConfigFile.find(
         (item) => item.name === componentType
       )
-      currentComponentType.children.push(SHORT_MD_PATH)
+      if (
+        !currentComponentType.children.find((path) => path === SHORT_MD_PATH)
+      ) {
+        currentComponentType.children.push(SHORT_MD_PATH)
+      }
     }
     // 创建文件
     fileSave(

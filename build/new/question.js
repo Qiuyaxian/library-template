@@ -1,6 +1,6 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
-const { docsFilePath } = require('./utils')
+const { docsFilePath, getComponent } = require('./utils')
 
 // 获取类型
 module.exports = function () {
@@ -18,7 +18,12 @@ module.exports = function () {
       type: 'input',
       name: 'componentName',
       message: '请输入组件名称，使用大驼峰命名方式，如 Button 、FilePreview',
-      validate: (answer) => !!answer,
+      validate: function (answer) {
+        if (getComponent(answer)) {
+          return '该组件已经存在，请重新输入'
+        }
+        return !!answer
+      },
       filter: (answer) => answer.trim()
     },
     {

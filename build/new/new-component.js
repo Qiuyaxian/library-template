@@ -22,24 +22,24 @@ module.exports = function (name) {
       filename: 'index.js',
       content: `import ${componentName} from './src/main';
 
-  /* istanbul ignore next */
-  ${componentName}.install = function(Vue) {
-    Vue.component(${componentName}.name, ${componentName});
-  };
+/* istanbul ignore next */
+${componentName}.install = function(Vue) {
+  Vue.component(${componentName}.name, ${componentName});
+};
 
-  export default ${componentName};`
+export default ${componentName};`
     },
     {
       filename: 'src/main.vue',
       content: `<template>
-    <div class="${componentName}"></div>
-  </template>
+  <div class="${componentName}"></div>
+</template>
 
-  <script>
-  export default {
-    name: '${componentName}'
-  };
-  </script>`
+<script>
+export default {
+  name: '${componentName}'
+};
+</script>`
     }
   ]
 

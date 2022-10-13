@@ -54,7 +54,7 @@ module.exports = {
     return upperCamelCase(componentName)
   },
   getComponent(componentName) {
-    return componentsFile[componentName]
+    return componentsFile[kebabCase(componentName)]
   },
   setComponent(componentName) {
     if (!componentsFile) {
