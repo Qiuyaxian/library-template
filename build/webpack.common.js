@@ -1,6 +1,6 @@
 // step2（以 umd 规范打包构建类库入口）
 const path = require('path')
-const TerserPlugin = require('terser-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin')
 const webpackBaseConfig = require('./webpack.base')
 // 生产
 const webpackConfig = {

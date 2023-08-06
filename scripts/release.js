@@ -52,9 +52,10 @@ const release = async () => {
   ])
 
   if (yes) {
-    // 执行提交
+    // 执行构建打包
     await execa('npm', ['run', 'build'], { stdio: 'inherit' })
     await execa('git', ['add', '.'], { stdio: 'inherit' })
+    // 提交打包代码
     try {
       await execa('git', ['commit', '-m', `build: build ${version}`, '-m'], {
         stdio: 'inherit'
@@ -72,6 +73,7 @@ const release = async () => {
       } catch (e) {}
     }
     if (version !== curVersion) {
+      // 不给git提交打上tag标签
       await execa('npm', ['--no-git-tag-version', 'version', version], {
         stdio: 'inherit'
       })
@@ -80,6 +82,7 @@ const release = async () => {
         await execa('git', ['commit', '-m', `build: release ${version}`], {
           stdio: 'inherit'
         })
+        // 获取当前提交的hash值，并打上版本tag
         const { stdout: commitid } = await execa('git', ['rev-parse', 'HEAD'])
         await execa('git', ['tag', '-a', version, '-m', commitid], {
           stdio: 'inherit'
