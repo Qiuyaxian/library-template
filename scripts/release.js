@@ -73,7 +73,7 @@ const release = async () => {
       } catch (e) {}
     }
     if (version !== curVersion) {
-      // 不给git提交打上tag标签
+      // 不给git提交打上tag标签(你可以使用 --no-git-tag-version 或 git-tag-version，完全启用或禁用 git 打标签行为, 并通过npm version更新版本)
       await execa('npm', ['--no-git-tag-version', 'version', version], {
         stdio: 'inherit'
       })
